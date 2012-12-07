@@ -10,7 +10,7 @@ class user
 		}
 	}
 
-	function authenticate($username)
+	private function authenticate($username)
 	{
 		$this->user = $username;
 		$this->usergroup = 2;
@@ -18,8 +18,9 @@ class user
 
 	function login($username, $password) //this is the login. User can only exist if user exists..
 	{
-		if ($username == 'dm1911') //check the password is right
+		if ($username == 'dm1911') //check the password is right (PAM)
 		{
+			//check is the user has already completed?
 			$this->authenticate($username);
 			return true;
 		}
