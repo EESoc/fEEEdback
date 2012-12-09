@@ -23,7 +23,9 @@ if (!@$_SESSION['user'])
 
 		if ($user->login($_POST['username'], $_POST['password']) === true)
 		{
-			$error = 'good';
+			header('Location: ' . $_SERVER['REQUEST_URI'] . '?good');
+			$_SESSION['user'] = $_POST['username'];
+			//header();
 		}
 		else {
 			$error = 'Invalid username';
