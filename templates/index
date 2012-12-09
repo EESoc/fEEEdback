@@ -9,6 +9,7 @@
 
 <body>
 	<div id="content">
+		<a href='?do=logout' id='logout'>logout</a>
 		<div id="container">
 			Hello
 		</div>

@@ -14,6 +14,12 @@ $twig = new Twig_Environment($loader, array() );
 //session:user saves the username
 //we then create the user class from that username
 
+if (@$_GET['do'] == 'logout')
+{
+	session_destroy();
+	header('Location: ' . $_SERVER['SCRIPT_NAME']);
+}
+
 if (!@$_SESSION['user'])
 {
 	if (!empty($_POST))
@@ -23,7 +29,7 @@ if (!@$_SESSION['user'])
 
 		if ($user->login($_POST['username'], $_POST['password']) === true)
 		{
-			header('Location: ' . $_SERVER['REQUEST_URI'] . '?good');
+			header('Location: ' . $_SERVER['REQUEST_URI']);
 			$_SESSION['user'] = $_POST['username'];
 			//header();
 		}
@@ -39,6 +45,7 @@ if (!@$_SESSION['user'])
 
 	exit();
 }
+
 
 $user = new user($_SESSION['user']);
 
