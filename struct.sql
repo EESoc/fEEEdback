@@ -1,23 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.3
+-- version 3.4.5deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 07, 2012 at 03:48 PM
--- Server version: 5.5.28
--- PHP Version: 5.3.15
+-- Generation Time: Dec 09, 2012 at 11:11 PM
+-- Server version: 5.1.66
+-- PHP Version: 5.3.6-13ubuntu3.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
--- Database: `ee`
+-- Database: `gta`
 --
 
 -- --------------------------------------------------------
@@ -43,11 +37,12 @@ CREATE TABLE IF NOT EXISTS `gta_feedback` (
 
 CREATE TABLE IF NOT EXISTS `gta_gtas` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `group` varchar(30) NOT NULL,
+  `ee_group` varchar(30) NOT NULL,
   `experiment` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -61,7 +56,3 @@ CREATE TABLE IF NOT EXISTS `gta_users` (
   `completed` int(1) NOT NULL,
   PRIMARY KEY (`uname`,`labgroup`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
