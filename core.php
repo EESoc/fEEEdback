@@ -19,13 +19,14 @@ if (!@$_SESSION['user'])
 	if (!empty($_POST))
 	{
 		//check login.
-		$user = new user;
+		$user = new user($db);
 
 		if ($user->login($_POST['username'], $_POST['password']) === true)
 		{
 			$error = 'good';
 		}
-		else {
+		else 
+		{
 			$error = 'Invalid username or password';
 		}
 	}
@@ -38,5 +39,5 @@ if (!@$_SESSION['user'])
 	exit();
 }
 
-$user = new user($_SESSION['user']);
+$user = new user($db, $_SESSION['user']);
 
