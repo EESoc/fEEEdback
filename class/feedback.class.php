@@ -19,8 +19,6 @@ class feedback
 
         while($row = $result->fetch_assoc())
         {
-            //array_push($list, $row['slug']);
-            $row['image'] = $row['name'].'.png';
             $details[] = $row;
         }
 

@@ -37,12 +37,12 @@ CREATE TABLE IF NOT EXISTS `gta_feedback` (
 
 CREATE TABLE IF NOT EXISTS `gta_gtas` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
-  `slug` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `ee_group` varchar(30) NOT NULL,
+  `image` varchar(75) NOT NULL,
+  `group` varchar(30) NOT NULL,
   `experiment` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
