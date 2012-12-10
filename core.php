@@ -3,6 +3,7 @@
 session_start();
 
 include('class/user.class.php');
+include('class/gta.class.php');
 
 require_once 'db.php';
 
@@ -13,6 +14,7 @@ $twig = new Twig_Environment($loader, array() );
 
 //session:user saves the username
 //we then create the user class from that username
+
 
 if (@$_GET['do'] == 'logout')
 {
@@ -35,7 +37,7 @@ if (!@$_SESSION['user'])
 		}
 		else 
 		{
-			$error = 'Invalid username or password';
+			$error = $user->login_error;
 		}
 	}
 
@@ -48,4 +50,6 @@ if (!@$_SESSION['user'])
 }
 
 $user = new user($db, $_SESSION['user']);
+
+
 
