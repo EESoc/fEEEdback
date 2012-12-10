@@ -18,8 +18,9 @@ class gta
         $list = array();
         while($row = $result->fetch_assoc())
         {
-            array_push($list, $row["slug"]);
+            $row['image'] = $row['slug'].'.png';
+            array_push($list, $row);
         }
-
+        $this->gtalist = $list;
     }
 }
