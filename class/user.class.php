@@ -49,7 +49,7 @@ class user
             $row = $result->fetch_assoc();
             if($row['completed'])
             {
-                $this->login_error = 'You keen bean. You appear to have already done this survey. You can\'t do it twice!';
+                $this->login_error = 'You have already done this survey.';
                 return false; //Here if they have already completed the survey
             }
             $this->usergroup = $row['labgroup'];        //We do this stuff now since they are allowed to do the survey
@@ -60,7 +60,7 @@ class user
         }
         else
         {
-            $this->login_error = 'Oops, you don\'t appear to be in EE1 or 2. If this is a mistake, please contact <a href="mailto:txl11@ic.ac.uk">Thomas Lim</href>';
+            $this->login_error = 'Not elegible - <a href="mailto:txl11@ic.ac.uk">mistake?</a>';
             return false; //Here because they aren't in the DB and hence not eligible to provide feedback.
         }
 	}
@@ -74,17 +74,12 @@ class user
 			//check is the user has already completed?
 			return ($this->authenticate($username));
 		}
-		$this->login_error = 'Wrong username and password combination. Please try again.';
+		$this->login_error = 'Wrong username/password combination.';
 		return false;
 	}
 
     function completed_survey() //Sets the user as having completed the survey (when they are done). Should only be here if they have logged in, were eligible and submitted feedback.
     {
-        $result = $this->db->query("UPDATE gta SET completed=1
-                                        WHERE uname='$this->user'");
-        if(!$result->num_rows)
-        {
-            echo 'Something went badly wrong here...';
-        }
+        return $this->db->query("UPDATE gta_users SET completed = '1' WHERE uname = '".$this->user."'");
     }
 }

@@ -35,6 +35,7 @@ if ($gtas = $gtapage->getgta('A1')){
 		if (!isset($error))
 		{
 			if ($gtapage->insert_results($save)) {
+				$user->completed_survey();
 				header("Location: success.php");
 			} else {
 				$error = $gtapage->error;

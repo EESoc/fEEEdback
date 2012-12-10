@@ -30,7 +30,7 @@ if (!@$_SESSION['user'])
 
 		if ($user->login($_POST['username'], $_POST['password']) === true)
 		{
-			header('Location: ' . $_SERVER['REQUEST_URI']);
+			header('Location: index.php');
 			$_SESSION['user'] = $_POST['username'];
 			//header();
 		}
