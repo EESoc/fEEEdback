@@ -1,15 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>GM Event database</title>
+{% extends "core" %}
 
+{% block styles %}
 <link rel='stylesheet' href='style/login.css' type="text/css"></style>
-</head>
+{% endblock %}
 
-<body>
-	<div id="content">
-		<div id="title">
+{% block maincontent %}<div id="title">
 			{{title}}
 		</div>
 		<div id="loginform"><br />
@@ -26,17 +21,4 @@
 				</form>
 			</div>
 		</div>
-	</div>
-<!--
-<div style="text-align: center; margin-top: 50px;">
-<div>Login saved for {{days}} days of inactivity.<br />
-	If you are using a public PC, make sure you logout!
-<div id="loginError">{{error}}</div></div>
-<form method="POST" action="index.php">
-<input type="hidden" name="do" value="login">
-Username: <input type="text" name="username" /><br />
-Password: <input type="password" name="password" /><br />
-<input type="submit" value="Login"> or <a href="../register.php">Apply for online account</a>
-</div>!-->
-</body>
-</html>
+{% endblock %}

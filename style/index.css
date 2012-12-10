@@ -10,6 +10,47 @@ a {
 	clear: both;
 }
 
+#gta_table {
+	border: thin solid #333;
+}
+#gta_table tr {
+	border-top: thin solid #333;
+}
+#gta_table td {
+	padding: 5px 5px 20px;
+}
+#submitbutton {
+	text-align: center;
+}
+#submitbutton input[type="submit"]{
+	width: 60%;
+	margin: 5px auto 0;
+}
+#error {
+	height: 18px;
+	margin: 5px 0 0;
+	color: #900;
+}
+.slider{
+	width: 80%;
+	margin: auto auto 5px;
+}
+.slider-input {
+	text-align: center;
+}
+.slider-input .smalltext {
+	font-size: .8em;
+	color: #666;
+}
+.gta-comments {
+	width: 70%;
+	margin: 15px auto 0;
+}
+.gta-comments textarea {
+	width: 100%;
+	height: 50px;
+}
+
 #content {
 	width: 80%;
 	margin: 4em auto 0 auto;

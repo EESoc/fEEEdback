@@ -1,12 +1,11 @@
 <?php
 
 session_start();
+require_once 'db.php';
 
 include('class/user.class.php');
-include('class/gta.class.php');
 include('class/feedback.class.php');
 
-require_once 'db.php';
 
 require_once 'Twig/Autoloader.php';
 Twig_Autoloader::register();

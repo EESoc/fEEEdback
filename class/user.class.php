@@ -49,11 +49,9 @@ class user
             $row = $result->fetch_assoc();
             if($row['completed'])
             {
-                echo 'done survey';
                 $this->login_error = 'You keen bean. You appear to have already done this survey. You can\'t do it twice!';
                 return false; //Here if they have already completed the survey
             }
-            echo 'ready to survey';
             $this->usergroup = $row['labgroup'];        //We do this stuff now since they are allowed to do the survey
             $this->user = $username;
             $names = ldap_get_names($username);
@@ -62,7 +60,6 @@ class user
         }
         else
         {
-            echo 'not eligible to do survey';
             $this->login_error = 'Oops, you don\'t appear to be in EE1 or 2. If this is a mistake, please contact <a href="mailto:txl11@ic.ac.uk">Thomas Lim</href>';
             return false; //Here because they aren't in the DB and hence not eligible to provide feedback.
         }
@@ -75,7 +72,7 @@ class user
 		if (pam_auth($username, $password)) //check the password is right (pam_auth)
 		{
 			//check is the user has already completed?
-			return ($this->authenticate($username)==true)?  true: false;
+			return ($this->authenticate($username));
 		}
 		$this->login_error = 'Wrong username and password combination. Please try again.';
 		return false;

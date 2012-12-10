@@ -1,2 +1,2 @@
-<table rules='all'>
-<form>
+<table id='gta_table' rules='none' cellpadding='none' cellspacing='none' width='100%'>
+<form method='POST'>

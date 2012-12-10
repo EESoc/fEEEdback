@@ -1,10 +1,16 @@
 <tr>
 	<td>
-		<img src='' />
+		<img src='{{gta.image}}' />
 	</td>
 	<td>
 		<h2>{{gta.name}}</h2>
-		<input type="text" class="sliderValue" data-index="0" value="1" />
     	<div class="slider slider-id-{{gta.id}}"></div>
+		<div class="slider-input">
+			GTA Grade: <input type="text" name="{{gta.id}}_score" class="sliderValue" data-index="{{count}}" /> <input name="{{gta.id}}_na" type="checkbox" /> Abstain / NA
+			<div class="smalltext">1 (worst) to 5 (best)</div>
+		</div>
+		<div class="gta-comments">
+			<textarea name="{{gta.id}}_comments" placeholder="Do you have any comments/feedback for this GTA?"></textarea>
+		</div>
     </td>
 </tr>
