@@ -4,6 +4,7 @@ session_start();
 
 include('class/user.class.php');
 include('class/gta.class.php');
+include('class/feedback.class.php');
 
 require_once 'db.php';
 
@@ -14,7 +15,6 @@ $twig = new Twig_Environment($loader, array() );
 
 //session:user saves the username
 //we then create the user class from that username
-
 
 if (@$_GET['do'] == 'logout')
 {
