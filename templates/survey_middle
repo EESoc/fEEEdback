@@ -4,6 +4,7 @@
 	</td>
 	<td>
 		<h2>{{gta.name}}</h2>
+		<div class="gta-experiment">Experiment <u>{{gta.experiment}}</u> for <u>{{gta.group}}</u></div>
     	<div class="slider slider-id-{{gta.id}}"></div>
 		<div class="slider-input">
 			GTA Grade: <input type="text" name="{{gta.id}}_score" class="sliderValue" data-index="{{count}}" /> <input name="{{gta.id}}_na" type="checkbox" /> Abstain / NA

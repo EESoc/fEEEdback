@@ -19,6 +19,14 @@ a {
 #gta_table td {
 	padding: 5px 5px 20px;
 }
+#gta_table h2 {
+	margin: 10px 0 0;
+}
+.gta-experiment{
+	color: #555;
+	font-size: .9em;
+	margin: 0 10px 10px;
+}
 #submitbutton {
 	text-align: center;
 }
