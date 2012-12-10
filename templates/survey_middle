@@ -1,0 +1,10 @@
+<tr>
+	<td>
+		<img src='' />
+	</td>
+	<td>
+		<h2>{{gta.name}}</h2>
+		<input type="text" class="sliderValue" data-index="0" value="1" />
+    	<div class="slider slider-id-{{gta.id}}"></div>
+    </td>
+</tr>

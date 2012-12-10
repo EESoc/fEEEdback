@@ -14,8 +14,8 @@ class user
 
 	private function authenticate($username)
 	{
-        $escaped_user = $this->db->escape_string($username);
-        $result = $this->db->query();
+        //$escaped_user = $this->db->escape_string($username);
+        //$result = $this->db->query();
 		$this->user = $username;
 		$this->usergroup = 2;
 	}

@@ -4,12 +4,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>GM Event database</title>
 
+<link rel='stylesheet' href='style/jquery-ui-1.9.2.custom.css' type="text/css"></style>
 <link rel='stylesheet' href='style/index.css' type="text/css"></style>
+
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
+<script type='text/javascript' src='style/jquery-ui-1.9.2.custom.min.js'></script>
+	<script type='text/javascript'>
+	$(document).ready(function() {
+	    $("#slider").slider({
+	        min: 1,
+	        max: 5,
+	        step: 1,
+	        values: [0],
+	        slide: function(event, ui) {
+	            for (var i = 0; i < ui.values.length; ++i) {
+	                $("input.sliderValue[data-index=" + i + "]").val(ui.values[i]);
+	            }
+	        }
+	    });
+
+	    $("input.sliderValue").change(function() {
+	        var $this = $(this);
+	        $("#slider").slider("values", $this.data("index"), $this.val());
+	    });
+	});
+</script>
+
 </head>
 
 <body>
 	<div id="content">
-		<a href='?do=logout' id='logout'>logout</a>
+		Logged as {{user.fname}} <a href='?do=logout' id='logout'>logout</a>
 		<div id="container">
 			Hello
 		</div>
