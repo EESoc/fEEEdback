@@ -16,11 +16,14 @@ class gta
             return;
         }
         $list = array();
+        $details = array();
         while($row = $result->fetch_assoc())
         {
+            array_push($list, $row['slug']);
             $row['image'] = $row['slug'].'.png';
-            array_push($list, $row);
+            array_push($details, $row);
         }
-        $this->gtalist = $list;
+        $this->details = $details;
+        $this->list = $list;
     }
 }
