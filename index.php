@@ -1,13 +1,12 @@
 <?php
 
-//var_dump($_POST);
-
 include('core.php');
 $twig->addGlobal('user', $user);
 
 $gtapage = new feedback($db);
 
-if ($gtas = $gtapage->getgta('A1')){
+if ($gtas = $gtapage->getgta($user->usergroup))
+{
 	//Check POST;
 	if (!empty($_POST))
 	{
@@ -34,16 +33,17 @@ if ($gtas = $gtapage->getgta('A1')){
 
 		if (!isset($error))
 		{
-			if ($gtapage->insert_results($save)) {
+			if ($gtapage->insert_results($save))
+            {
 				$user->completed_survey();
 				header("Location: success.php");
-			} else {
+			} else
+            {
 				$error = $gtapage->error;
 			}
 		}
 	}
 
-	//
 	$content = $twig->render('survey_start');
 	foreach ($gtas as $key=>$gta)
 	{
@@ -53,7 +53,9 @@ if ($gtas = $gtapage->getgta('A1')){
 		));
 	}
 	$content .= $twig->render('survey_end', array('error' => @$error));
-} else {
+}
+else
+{
 	$content = $gtapage->error;
 }
 

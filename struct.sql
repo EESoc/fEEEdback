@@ -26,8 +26,9 @@ CREATE TABLE IF NOT EXISTS `gta_feedback` (
   `uname` varchar(8) NOT NULL,
   `vote` int(2) NOT NULL,
   `comment` text NOT NULL,
+  `submit_time` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

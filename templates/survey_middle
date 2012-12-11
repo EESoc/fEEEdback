@@ -1,6 +1,6 @@
 <tr>
 	<td>
-		<img src='{{gta.image}}' />
+		<img src='gtapics/{{gta.image}}.png' />
 	</td>
 	<td>
 		<h2>{{gta.name}}</h2>
