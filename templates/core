@@ -19,7 +19,7 @@
 		</div>
 {% endblock %}
 	</div>
-	<div id="footer">Design & Code by Dario & Thomas<br />
+	<div id="footer">Design & Code by Dario Magliocchetti & Thomas Lim<br />
 	&copy; 2012</div>
 </body>
 </html>
