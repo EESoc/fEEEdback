@@ -1,5 +1,16 @@
 <?php
 
+/* Code and Design created and managed by Dario Magliocchetti & Thomas Lim
+ * Do not replicate, use or host any part of this code without prior permission.
+ *
+ * Project for GTA feedback within the department. To be used by EE1 and EE2.
+ *
+ * File: core.php
+ * Use:
+ *      Initialises classes, databases and session. Handles login and logout.
+ *
+*/
+
 session_start();
 require_once 'db.php';
 

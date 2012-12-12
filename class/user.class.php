@@ -1,5 +1,16 @@
 <?php
 
+/* Code and Design created and managed by Dario Magliocchetti & Thomas Lim
+ * Do not replicate, use or host any part of this code without prior permission.
+ *
+ * Project for GTA feedback within the department. To be used by EE1 and EE2.
+ *
+ * File: user.class.php
+ * Use:
+ *      Holds the class for the user - contains functions to login, authorise the user
+ *
+*/
+
 if(!function_exists('pam_auth') && LOCAL) // here to simulate running on Dougal
 {
     function pam_auth($username, $password)
@@ -83,3 +94,4 @@ class user
         return $this->db->query("UPDATE gta_users SET completed = '1' WHERE uname = '".$this->user."'");
     }
 }
+

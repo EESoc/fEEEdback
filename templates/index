@@ -42,8 +42,6 @@
 
 		});
 
-		var validItems = [1, 2, 3, 4, 5];
-
 		$("form").submit(function(){
 			$error = null;
 
@@ -57,7 +55,7 @@
 			$("input[type=text]").each(function() {
 				if (!$(this).val().match('^[1-5]$'))
 				{
-					$error = "Scores much be integers!";
+					$error = "Scores much be integers between 1 and 5";
 				}
 			});
 
@@ -72,7 +70,7 @@
 </script>
 {% endblock %}
 
-{% block maincontent %}<!--<div id="welcome">-->Welcome, {{user.fname}}</br>Feedback for {{user.usergroup}}</br><a href='?do=logout' id='logout'>logout</a>
+{% block maincontent %}<div id='top'><div id='top-feedback'>Welcome, <span id='name'>{{user.fname}}</span> (Survey for Group {{user.usergroup}})</div><div id='top-welcome'><a href='?do=logout' id='logout'>logout</a></div></div>
 	<div id="container">
 		{{content|raw}}
 	</div>

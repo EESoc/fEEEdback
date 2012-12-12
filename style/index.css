@@ -62,16 +62,31 @@ a {
 #content {
 	width: 80%;
 	margin: 4em auto 0 auto;
-	text-align: right;
 }
-#content a#logout {
-	font-size: 0.8em;
+
+#top {
+	padding: 0 0 10px 0;
+}
+#top #top-feedback {
+	float: left;
 	color: #555;
+}
+#top #top-welcome {
+	float: right;
+	color: #555;
+}
+#top #top-feedback #name {
+	color: #000;
+}
+#top a#logout {
+	font-size: 0.8em;
+	color: #777;
 	padding-right: 2px;
 	text-decoration: none;
 }
 
 #container {
+	clear: both;
 	text-align: left;
 	margin: 5px auto 10px;
 	background: #ffffff;
@@ -93,5 +108,8 @@ a {
 }
 
 #footer {
-
+	text-align: center;
+	margin: auto auto;
+	font-size: 0.8em;
+	color: #333366;
 }

@@ -1,5 +1,5 @@
 <tr>
-	<td>
+	<td style="width: 25%;">
 		<img src='gtapics/{{gta.image}}.png' />
 	</td>
 	<td>

@@ -1,5 +1,16 @@
 <?php
 
+/* Code and Design created and managed by Dario Magliocchetti & Thomas Lim
+ * Do not replicate, use or host any part of this code without prior permission.
+ *
+ * Project for GTA feedback within the department. To be used by EE1 and EE2.
+ *
+ * File: feedback.class.php
+ * Use:
+ *      Holds the class for the survey page - generates list of GTA data, and communicates to the db
+ *
+*/
+
 class feedback
 {
     function __construct($db)

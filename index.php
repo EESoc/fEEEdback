@@ -1,5 +1,16 @@
 <?php
 
+/* Code and Design created and managed by Dario Magliocchetti & Thomas Lim
+ * Do not replicate, use or host any part of this code without prior permission.
+ *
+ * Project for GTA feedback within the department. To be used by EE1 and EE2.
+ *
+ * File: index.php
+ * Use:
+ *      Controller
+ *
+*/
+
 include('core.php');
 $twig->addGlobal('user', $user);
 
@@ -18,7 +29,7 @@ if ($gtas = $gtapage->getgta($user->usergroup))
 				break;
 			}
 			elseif (!(ctype_digit($_POST[$gta['id'].'_score']) && $_POST[$gta['id'].'_score'] <= 5 && $_POST[$gta['id'].'_score'] >= 1)) {
-				$error = 'Scores much be integers!';
+				$error = 'Scores much be integers between 1 and 5';
 				break;
 			}
 
