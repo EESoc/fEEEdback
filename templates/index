@@ -72,7 +72,7 @@
 </script>
 {% endblock %}
 
-{% block maincontent %}Welcome, {{user.fname}} <a href='?do=logout' id='logout'>logout</a>
+{% block maincontent %}<!--<div id="welcome">-->Welcome, {{user.fname}}</br>Feedback for {{user.usergroup}}</br><a href='?do=logout' id='logout'>logout</a>
 	<div id="container">
 		{{content|raw}}
 	</div>

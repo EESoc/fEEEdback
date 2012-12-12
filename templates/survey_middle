@@ -4,14 +4,14 @@
 	</td>
 	<td>
 		<h2>{{gta.name}}</h2>
-		<div class="gta-experiment">Experiment <u>{{gta.experiment}}</u> for <u>{{gta.group}}</u></div>
+		<div class="gta-experiment"><u>{{gta.experiment}}</u></div>
     	<div class="slider slider-id-{{gta.id}}"></div>
 		<div class="slider-input">
-			GTA Grade: <input type="text" name="{{gta.id}}_score" class="sliderValue" data-index="{{count}}" /> <input name="{{gta.id}}_na" type="checkbox" /> Abstain / NA
+			GTA Score: <input type="text" name="{{gta.id}}_score" class="sliderValue" data-index="{{count}}" /> <input name="{{gta.id}}_na" type="checkbox" /> Abstain or N/A
 			<div class="smalltext">1 (worst) to 5 (best)</div>
 		</div>
 		<div class="gta-comments">
-			<textarea name="{{gta.id}}_comments" placeholder="Do you have any comments/feedback for this GTA?"></textarea>
+			<textarea name="{{gta.id}}_comments" placeholder="Do you have any comments or feedback for this GTA?"></textarea>
 		</div>
     </td>
 </tr>
