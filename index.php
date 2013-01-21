@@ -11,7 +11,10 @@
  *
 */
 
+define('currentpage', 'index');
+
 include('core.php');
+
 $twig->addGlobal('user', $user);
 
 $gtapage = new feedback($db);

@@ -26,6 +26,15 @@ $twig = new Twig_Environment($loader, array() );
 //session:user saves the username
 //we then create the user class from that username
 
+if(currentpage != 'admin')
+{
+	if(time()>1412121600)  //This automatically closes the survey if beyond the finishing time, unless it's the admin page.
+	{
+		echo $twig->render('closed');
+		exit();
+	}
+}
+
 if (@$_GET['do'] == 'logout')
 {
 	session_destroy();

@@ -1,0 +1,16 @@
+{% extends "core" %}
+
+{% block styles %}
+<link rel='stylesheet' href='style/login.css' type="text/css"></style>
+<link rel='stylesheet' href='style/jquery-ui-1.9.2.custom.css' type="text/css"></style>
+{% endblock %}
+
+
+{% block maincontent %}
+<div id='title'>
+	EE GTA Survey
+</div>
+<div style="font: 1.5em Helvetica, Arial, sans-serif;">
+	Thank you for your interest, but this survey has now closed.
+</div>
+{% endblock %}

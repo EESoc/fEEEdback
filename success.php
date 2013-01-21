@@ -11,6 +11,7 @@
  *
 */
 
+define('currentpage', 'success');
 
 include('core.php');
 $twig->addGlobal('user', $user);
