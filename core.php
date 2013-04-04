@@ -11,6 +11,7 @@
  *
 */
 
+session_save_path(__DIR__.'/sess');
 session_start();
 require_once 'db.php';
 
