@@ -28,7 +28,7 @@ $twig = new Twig_Environment($loader, array() );
 
 if(currentpage != 'admin')
 {
-	if(time()>1412121600)  //This automatically closes the survey if beyond the finishing time, unless it's the admin page.
+	if(time()>1367621999)  //This automatically closes the survey if beyond the finishing time, unless it's the admin page.
 	{
 		echo $twig->render('closed');
 		exit();
