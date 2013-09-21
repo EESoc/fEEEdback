@@ -22,6 +22,7 @@
 		        values: [3],
 		        slide: function(event, ui) {
 		            for (var i = 0; i < ui.values.length; ++i) {
+		            	console.log(ui.values[i])
 		                $("input.sliderValue[data-index=" + index + "]").val(Math.round(ui.values[i]));
 		            }
 		            $("#gta_table tr:eq(" + index + ")").css('background-color', '#efe');

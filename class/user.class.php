@@ -66,6 +66,7 @@ class user
             $row = $result->fetch_assoc();
             
             $this->usergroup = $row['labgroup'];        //We do this stuff now since they are allowed to do the survey
+            $this->tutorgroup = $row['tutorgroup'];        //We do this stuff now since they are allowed to do the survey
             $this->user = $username;
             $names = ldap_get_names($username);
             $this->fname = $names[0];

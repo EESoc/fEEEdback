@@ -17,6 +17,7 @@ require_once 'db.php';
 
 include('class/user.class.php');
 include('class/feedback.class.php');
+include('class/tutors.class.php');
 
 
 require_once 'Twig/Autoloader.php';

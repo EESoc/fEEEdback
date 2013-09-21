@@ -14,13 +14,11 @@ SET time_zone = "+00:00";
 -- Database: `gta`
 --
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `gta_feedback`
+-- Table structure for table `gta_chem_feedback`
 --
 
-CREATE TABLE IF NOT EXISTS `gta_feedback` (
+CREATE TABLE IF NOT EXISTS `gta_chem_feedback` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `gtaid` int(5) NOT NULL,
   `uname` varchar(8) NOT NULL,
@@ -33,39 +31,10 @@ CREATE TABLE IF NOT EXISTS `gta_feedback` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gta_gtas`
---
-
-CREATE TABLE IF NOT EXISTS `gta_gtas` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `image` varchar(75) NOT NULL,
-  `group` varchar(30) NOT NULL,
-  `experiment` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gta_users`
---
-
-CREATE TABLE IF NOT EXISTS `gta_users` (
-  `uname` varchar(8) NOT NULL,
-  `labgroup` varchar(5) NOT NULL,
-  `completed` int(1) NOT NULL,
-  PRIMARY KEY (`uname`,`labgroup`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `gta_chem_feedback`
 --
 
-CREATE TABLE IF NOT EXISTS `gta_chem_feedback` (
+CREATE TABLE IF NOT EXISTS `gta_chem_tutor_feedback` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `gtaid` int(5) NOT NULL,
   `uname` varchar(8) NOT NULL,
@@ -94,12 +63,28 @@ CREATE TABLE IF NOT EXISTS `gta_chem_gtas` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gta_chem_gtas`
+--
+
+CREATE TABLE IF NOT EXISTS `gta_chem_tutors` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `image` varchar(75) NOT NULL,
+  `group` varchar(30) NOT NULL,
+  `experiment` varchar(30) NOT NULL,
+  `open` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `gta_chem_users`
 --
 
 CREATE TABLE IF NOT EXISTS `gta_chem_users` (
   `uname` varchar(8) NOT NULL,
   `labgroup` varchar(5) NOT NULL,
-  `completed` int(1) NOT NULL,
-  PRIMARY KEY (`uname`,`labgroup`)
+  `tutorgroup` varchar(5) NOT NULL,
+  PRIMARY KEY (`uname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

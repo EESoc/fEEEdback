@@ -18,9 +18,10 @@ include('core.php');
 $twig->addGlobal('user', $user);
 
 $gtapage = new feedback($db);
-
+$tutorpage = new feedback_tutors($db);
 if ($gtas = $gtapage->getgta($user->usergroup))
 {
+	$tutors = $tutorpage->getgta($user->tutorgroup);
 	//Check POST;
 	if (!empty($_POST))
 	{
@@ -42,32 +43,65 @@ if ($gtas = $gtapage->getgta($user->usergroup))
 			}
 
 		}
-
-		if (!isset($error) && isset($save))
+		foreach($tutors as $tutor)
 		{
-			if ($gtapage->insert_results($save))
+			// For each GTA with a score, let's validate and save
+			if (isset($_POST[$tutor['id'].'_tut_score']) && $_POST[$tutor['id'].'_tut_score'] != -1) {
+				if (!(ctype_digit($_POST[$tutor['id'].'_tut_score']) && $_POST[$tutor['id'].'_tut_score'] <= 5 && $_POST[$tutor['id'].'_tut_score'] >= 1)) {
+					$error = 'Scores must be integers between 1 and 5';
+					break;
+				}
+
+				$save_tut[] = array(
+					'gtaid' => $tutor['id'],
+					'uname' => $user->user,
+					'vote' => (isset($_POST[$tutor['id'].'_tut_na'])) ? '0' : $db->escape_string($_POST[$tutor['id'].'_tut_score']),
+					'comment' => $db->escape_string($_POST[$tutor['id'].'_tut_comments'])
+				);
+			}
+
+		}
+
+		if (!isset($error) && (isset($save) || isset($save_tut)))
+		{
+			if ($gtapage->insert_results(@$save) && $tutorpage->insert_results($save_tut))
             {
 				header("Location: index.php?do=thanks");
 			}
 			else
             {
-				$error = $gtapage->error;
+				$error = $tutorpage->error;
 			}
 		}
 	}
 
 	$content = $twig->render('survey_start');
-	foreach ($gtas as $key=>$gta)
+	$i = 0;
+	foreach ($gtas as $gta)
 	{
 		$result = $db->query("SELECT * FROM gta_chem_feedback WHERE gtaid = '" . $gta['id'] . "' AND uname = '" . $user->user . "'");
         if(!$result->num_rows)
 		{
 			$content .= $twig->render('survey_middle', array(
 				'gta' => $gta,
-				'count' => $key
+				'type' => 'gta',
+				'count' => $i++
 			));
 		}
 	}
+	foreach ($tutors as $key2=>$tutor)
+	{
+		$result = $db->query("SELECT * FROM gta_chem_tutor_feedback WHERE gtaid = '" . $tutor['id'] . "' AND uname = '" . $user->user . "'");
+        if(!$result->num_rows)
+		{
+			$content .= $twig->render('survey_middle', array(
+				'gta' => $tutor,
+				'type' => 'tutor',
+				'count' => $i++
+			));
+		}
+	}
+
 	$content .= $twig->render('survey_end', array('error' => @$error));
 }
 else
