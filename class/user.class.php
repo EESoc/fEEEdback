@@ -58,28 +58,20 @@ class user
         if($result->num_rows)
         {
             $row = $result->fetch_assoc();
-            if($row['completed'])
-            {
-                $this->login_error = 'You have already done this survey.';
-                return false; //Here if they have already completed the survey
-            }
+            
             $this->usergroup = $row['labgroup'];        //We do this stuff now since they are allowed to do the survey
             $this->user = $username;
             $names = ldap_get_names($username);
             $this->fname = $names[0];
             return true;
         }
-        else
-        {
-            $this->login_error = 'Not elegible - <a href="mailto:txl11@ic.ac.uk">mistake?</a>';
-            return false; //Here because they aren't in the DB and hence not eligible to provide feedback.
-        }
+        
+        $this->login_error = 'Not elegible - Contact Bridge';
+        return false; //Here because they aren't in the DB and hence not eligible to provide feedback.
 	}
 
 	function login($username, $password) //this is the login. User can only exist if user exists..
 	{
-
-
 		if (pam_auth($username, $password)) //check the password is right (pam_auth)
 		{
 			//check is the user has already completed?
@@ -88,10 +80,5 @@ class user
 		$this->login_error = 'Wrong username/password combination.';
 		return false;
 	}
-
-    function completed_survey() //Sets the user as having completed the survey (when they are done). Should only be here if they have logged in, were eligible and submitted feedback.
-    {
-        return $this->db->query("UPDATE gta_users SET completed = '1' WHERE uname = '".$this->user."'");
-    }
 }
 

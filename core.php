@@ -24,18 +24,6 @@ Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader, array() );
 
-//session:user saves the username
-//we then create the user class from that username
-
-if(currentpage != 'admin')
-{
-	if(time()>1367621999)  //This automatically closes the survey if beyond the finishing time, unless it's the admin page.
-	{
-		echo $twig->render('closed');
-		exit();
-	}
-}
-
 if (@$_GET['do'] == 'logout')
 {
 	session_destroy();
@@ -44,6 +32,8 @@ if (@$_GET['do'] == 'logout')
 
 if (!@$_SESSION['user'])
 {
+	// Shall we do a cookie?
+
 	if (!empty($_POST))
 	{
 		//check login.
@@ -52,7 +42,7 @@ if (!@$_SESSION['user'])
 		if ($user->login($_POST['username'], $_POST['password']) === true)
 		{
 			header('Location: index.php');
-			$_SESSION['user'] = $_POST['username'];
+			$_SESSION['user'] = $user;
 			//header();
 		}
 		else 
@@ -60,16 +50,14 @@ if (!@$_SESSION['user'])
 			$error = $user->login_error;
 		}
 	}
-
 	echo $twig->render('web_login', array(
 		'title' => 'EE GTA Feedback',
 		'error' => @$error
-		));
-
+	));
 	exit();
 }
 
-$user = new user($db, $_SESSION['user']);
+$user = $_SESSION['user'];
 
 
 
