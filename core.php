@@ -52,7 +52,7 @@ if (!@$_SESSION['user'])
 		}
 	}
 	echo $twig->render('web_login', array(
-		'title' => 'EE GTA Feedback',
+		'title' => 'Staff Feedback',
 		'error' => @$error
 	));
 	exit();
