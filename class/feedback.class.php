@@ -20,8 +20,7 @@ class feedback
 
     function getgta($group)
     {
-        $result = $this->db->query("SELECT * FROM gta_gtas WHERE `group` = '$group'");
-        
+        $result = $this->db->query("SELECT * FROM gta_chem_gtas WHERE `group` = '$group' AND `open` > " . time());
         if(!$result->num_rows)
         {
             $this->error = 'Uh oh, this group doesn\'t appear to exist'; //Really we shouldn't have any undefined groups...
@@ -44,7 +43,7 @@ class feedback
             $values = $values . "('$value[gtaid]', '$value[uname]', '$value[vote]', '$value[comment]', NOW()),";
         }
         $values = substr_replace($values,"", -1); // So we get rid of the last comma and have valid SQL syntax.
-        $result = $this->db->query("INSERT INTO gta_feedback (gtaid, uname, vote, comment, submit_time) VALUES". $values);
+        $result = $this->db->query("INSERT INTO gta_chem_feedback (gtaid, uname, vote, comment, submit_time) VALUES". $values);
         if(!$result)
         {
             $this->error = 'Something went wrong submitting the feedback. Database error'; //make a $this->error if you return false;
