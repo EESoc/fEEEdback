@@ -42,7 +42,7 @@ if (!@$_SESSION['user'])
 		if ($user->login($_POST['username'], $_POST['password']) === true)
 		{
 			header('Location: index.php');
-			$_SESSION['user'] = $user;
+			$_SESSION['user'] = $_POST['username'];
 			//header();
 		}
 		else 
@@ -57,7 +57,7 @@ if (!@$_SESSION['user'])
 	exit();
 }
 
-$user = $_SESSION['user'];
+$user = new user($db, $_SESSION['user']);
 
 
 

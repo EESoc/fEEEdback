@@ -51,10 +51,16 @@ class user
 		}
 	}
 
+    function hasCompleted($gta_id) 
+    {
+        $result = $this->db->query("SELECT * FROM gta_chem_feedback where uname = '$username'");
+
+    }
+
 	private function authenticate($username)
 	{
         //$username = $this->db->escape_string($username);
-        $result = $this->db->query("SELECT * FROM gta_users where uname = '$username'");
+        $result = $this->db->query("SELECT * FROM gta_chem_users where uname = '$username'");
         if($result->num_rows)
         {
             $row = $result->fetch_assoc();
