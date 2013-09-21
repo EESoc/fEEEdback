@@ -20,7 +20,7 @@ class feedback
 
     function getgta($group)
     {
-        $result = $this->db->query("SELECT * FROM gta_chem_gtas WHERE `group` = '$group' AND `open` > " . time());
+        $result = $this->db->query("SELECT * FROM gta_chem_gtas WHERE `group` = '$group' AND `open` > NOW()");
         if(!$result->num_rows)
         {
             $this->error = 'Uh oh, this group doesn\'t appear to exist'; //Really we shouldn't have any undefined groups...
