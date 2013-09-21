@@ -45,13 +45,6 @@
 		$("form").submit(function(){
 			$error = null;
 
-			$("#gta_table tr").each(function(){
-				if ($(this).css("background-color") == "rgb(255, 238, 238)")
-				{
-					$error = "Please complete the Survery for all GTAs";
-				}
-			});
-
 			$("input[type=text]").each(function() {
 				if (!$(this).val().match('^[1-5]$'))
 				{
@@ -64,6 +57,13 @@
 				$("#error").text($error);
 				return false;
 			}
+			
+			$("#gta_table tr").each(function(){
+				if ($(this).css("background-color") == "rgb(255, 238, 238)")
+				{
+					$(this).find("input.sliderValue").val('-1')
+				}
+			});
 			return true;
 		})
 	});
@@ -72,6 +72,9 @@
 
 {% block maincontent %}<div id='top'><div id='top-feedback'>Welcome, <span id='name'>{{user.fname}}</span> (Survey for Group {{user.usergroup}})</div><div id='top-welcome'><a href='?do=logout' id='logout'>logout</a></div></div>
 	<div id="container">
+		{% if thanks == true %}
+			{% include 'success' %}
+		{%endif%}
 		{{content|raw}}
 	</div>
 {% endblock %}

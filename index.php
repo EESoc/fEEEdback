@@ -26,32 +26,30 @@ if ($gtas = $gtapage->getgta($user->usergroup))
 	{
 		foreach($gtas as $gta)
 		{
-			//Check that all data has been pushed properly & is valid
-			if (!isset($_POST[$gta['id'].'_score'])) {
-				$error = "Missing data from submission - please complete score for all GTAs.";
-				break;
-			}
-			elseif (!(ctype_digit($_POST[$gta['id'].'_score']) && $_POST[$gta['id'].'_score'] <= 5 && $_POST[$gta['id'].'_score'] >= 1)) {
-				$error = 'Scores much be integers between 1 and 5';
-				break;
+			// For each GTA with a score, let's validate and save
+			if (isset($_POST[$gta['id'].'_score']) && $_POST[$gta['id'].'_score'] != -1) {
+				if (!(ctype_digit($_POST[$gta['id'].'_score']) && $_POST[$gta['id'].'_score'] <= 5 && $_POST[$gta['id'].'_score'] >= 1)) {
+					$error = 'Scores must be integers between 1 and 5';
+					break;
+				}
+
+				$save[] = array(
+					'gtaid' => $gta['id'],
+					'uname' => $user->user,
+					'vote' => (isset($_POST[$gta['id'].'_na'])) ? '0' : $db->escape_string($_POST[$gta['id'].'_score']),
+					'comment' => $db->escape_string($_POST[$gta['id'].'_comments'])
+				);
 			}
 
-			$save[] = array(
-				'gtaid' => $gta['id'],
-				'uname' => $user->user,
-				'vote' => (isset($_POST[$gta['id'].'_na'])) ? '0' : $db->escape_string($_POST[$gta['id'].'_score']),
-				'comment' => $db->escape_string($_POST[$gta['id'].'_comments'])
-			);
-			
 		}
 
-		if (!isset($error))
+		if (!isset($error) && isset($save))
 		{
 			if ($gtapage->insert_results($save))
             {
-				$user->completed_survey();
-				header("Location: success.php");
-			} else
+				header("Location: index.php?do=thanks");
+			}
+			else
             {
 				$error = $gtapage->error;
 			}
@@ -61,10 +59,14 @@ if ($gtas = $gtapage->getgta($user->usergroup))
 	$content = $twig->render('survey_start');
 	foreach ($gtas as $key=>$gta)
 	{
-		$content .= $twig->render('survey_middle', array(
-			'gta' => $gta,
-			'count' => $key
-		));
+		$result = $db->query("SELECT * FROM gta_chem_feedback WHERE gtaid = '" . $gta['id'] . "' AND uname = '" . $user->user . "'");
+        if(!$result->num_rows)
+		{
+			$content .= $twig->render('survey_middle', array(
+				'gta' => $gta,
+				'count' => $key
+			));
+		}
 	}
 	$content .= $twig->render('survey_end', array('error' => @$error));
 }
@@ -73,7 +75,8 @@ else
 	$content = $gtapage->error;
 }
 
-
+$thanks = (@$_GET['do'] == 'thanks') ? true : false;
 echo $twig->render('index', array(
-	'content' => $content
+	'content' => $content,
+	'thanks' => $thanks
 ));
